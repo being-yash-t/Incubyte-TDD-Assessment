@@ -24,5 +24,16 @@ void main() {
       // verify
       expect(result, int.parse(numberString));
     });
+
+    test('should return 6 when add is called with \"1,5\"', () {
+      // arrage
+      final numbersString = "1,5";
+
+      // act
+      final result = add(numbersString);
+
+      // verify
+      expect(result, 6);
+    });
   });
 }
