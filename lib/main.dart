@@ -4,5 +4,5 @@ int add(String numbers) {
   if (numbers.trim().isEmpty) {
     return 0;
   }
-  throw UnimplementedError();
+  return int.parse(numbers);
 }
