@@ -27,12 +27,13 @@ dart test
 
 ## Structure
 ```
+├── bin
+│   └── incubyte_tdd_assignment.dart
 ├── lib
-│   ├── core
-│   │   ├── exceptions.dart
-│   │   └── utils.dart
 │   ├── add.dart
-│   └── main.dart
+│   └── core
+│       ├── exceptions.dart
+│       └── utils.dart
 └── test
     ├── add_test.dart
     └── core
