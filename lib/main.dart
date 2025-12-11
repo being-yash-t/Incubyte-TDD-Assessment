@@ -11,6 +11,7 @@ int add(String numbers) {
 
   var (String? customDelimiter, String numbersString) = splitDelimiter(numbers);
 
+  // Extract numbers into a <String>[]
   final numbersList = <String>[];
   if (customDelimiter == null) {
     numbersString = numbersString.replaceAll('\n', ',');
@@ -18,6 +19,8 @@ int add(String numbers) {
   } else {
     numbersList.addAll(numbersString.split(customDelimiter));
   }
+
+  // convert <String>[] into <int>[]
   final parsedNumbers = numbersList.map(int.parse);
 
   checkForNegatives(parsedNumbers);
