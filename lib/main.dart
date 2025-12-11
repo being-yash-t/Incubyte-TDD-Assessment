@@ -12,13 +12,17 @@ int add(String numbers) {
   final numbersList = numbers.split(',');
   final parsedNumbers = numbersList.map(int.parse);
 
-  final negatives = parsedNumbers.where((n) => n.isNegative);
+  checkForNegatives(parsedNumbers);
+
+  final sum = parsedNumbers.reduce(utils.add);
+  return sum;
+}
+
+void checkForNegatives(Iterable<int> numbers) {
+  final negatives = numbers.where((n) => n.isNegative);
   if (negatives.isNotEmpty) {
     final exception = NegativeNumberException(negatives);
     print(exception);
     throw exception;
   }
-
-  final sum = parsedNumbers.reduce(utils.add);
-  return sum;
 }

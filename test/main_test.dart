@@ -3,52 +3,82 @@ import 'package:incubyte_tdd_assignment/main.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Add: Functionality', () {
-    test('should return 0 when add is called with empty string', () {
-      // arrage
-      final emptyString = '';
+  group('Add: ', () {
+    group('Functionality', () {
+      test('should return 0 when add is called with empty string', () {
+        // arrage
+        final emptyString = '';
 
-      // act
-      final result = add(emptyString);
+        // act
+        final result = add(emptyString);
 
-      // verify
-      expect(result, 0);
+        // verify
+        expect(result, 0);
+      });
+
+      test('should return a 1 when add is called with "1"', () {
+        // arrange
+        final numberString = '1';
+
+        // act
+        final result = add(numberString);
+
+        // verify
+        expect(result, int.parse(numberString));
+      });
+
+      test('should return 6 when add is called with "1,5"', () {
+        // arrage
+        final numbersString = "1,5";
+
+        // act
+        final result = add(numbersString);
+
+        // verify
+        expect(result, 6);
+      });
     });
 
-    test('should return a 1 when add is called with "1"', () {
-      // arrange
-      final numberString = '1';
+    group('Error Handling', () {
+      test(
+        'should throw [NegativeNumberException] when input has any negative number',
+        () {
+          // arrage
+          final numbersString = "1,2,-1,0";
 
-      // act
-      final result = add(numberString);
+          int call() => add(numbersString);
 
-      // verify
-      expect(result, int.parse(numberString));
-    });
-
-    test('should return 6 when add is called with "1,5"', () {
-      // arrage
-      final numbersString = "1,5";
-
-      // act
-      final result = add(numbersString);
-
-      // verify
-      expect(result, 6);
+          // verify
+          expect(call, throwsA(TypeMatcher<NegativeNumberException>()));
+        },
+      );
     });
   });
 
-  group('Add: Error Handling', () {
+  group('checkForNegatives', () {
     test(
-      'should throw negative_number error when input has any negative number',
+      'should throw [NegativeNumberException] when input has any negative number',
       () {
         // arrage
-        final numbersString = "1,2,-1,0";
+        final numbers = [1, 2, -1, 0];
 
-        int call() => add(numbersString);
+        void call() => checkForNegatives(numbers);
 
         // verify
         expect(call, throwsA(TypeMatcher<NegativeNumberException>()));
+      },
+    );
+
+    test(
+      'should execute successfully without any error when no negative number is passed',
+      () {
+        // arrage
+        final numbers = [1, 2];
+
+        void call() => checkForNegatives(numbers);
+
+        // verify
+        expect(call, returnsNormally);
       },
     );
   });
