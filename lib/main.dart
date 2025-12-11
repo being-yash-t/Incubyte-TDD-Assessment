@@ -9,7 +9,15 @@ int add(String numbers) {
     return 0;
   }
 
-  final numbersList = numbers.split(',');
+  var (String? customDelimiter, String numbersString) = splitDelimiter(numbers);
+
+  final numbersList = <String>[];
+  if (customDelimiter == null) {
+    numbersString = numbersString.replaceAll('\n', ',');
+    numbersList.addAll(numbersString.split(','));
+  } else {
+    numbersList.addAll(numbersString.split(customDelimiter));
+  }
   final parsedNumbers = numbersList.map(int.parse);
 
   checkForNegatives(parsedNumbers);
@@ -27,11 +35,11 @@ void checkForNegatives(Iterable<int> numbers) {
   }
 }
 
-String? getDelimiter(String numbers) {
+(String? delimiter, String numbers) splitDelimiter(String numbers) {
   if (numbers.startsWith('//')) {
     final newLineIndex = numbers.indexOf('\n');
     final delimiter = numbers.substring(2, newLineIndex);
-    return delimiter;
+    return (delimiter, numbers.substring(newLineIndex + 1));
   }
-  return null;
+  return (null, numbers);
 }

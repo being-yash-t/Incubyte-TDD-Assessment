@@ -28,7 +28,7 @@ void main() {
       });
 
       test('should return 6 when add is called with "1,5"', () {
-        // arrage
+        // arrange
         final numbersString = "1,5";
 
         // act
@@ -36,6 +36,28 @@ void main() {
 
         // verify
         expect(result, 6);
+      });
+
+      test('should return 6 when add is called with "//;\n1;5"', () {
+        // arrange
+        final numbersString = "//;\n1;5";
+
+        // act
+        final result = add(numbersString);
+
+        // verify
+        expect(result, 6);
+      });
+
+      test('should return 7 when add is called with "1,5\n1"', () {
+        // arrange
+        final numbersString = "1,5\n1";
+
+        // act
+        final result = add(numbersString);
+
+        // verify
+        expect(result, 7);
       });
     });
 
@@ -83,21 +105,23 @@ void main() {
     );
   });
 
-  group('getDelimiter', () {
-    test('should return null if theres no delimiter in the string', () {
+  group('splitDelimiter', () {
+    test('should return null,[1,2,3] if theres no delimiter in the string', () {
       final inputString = "1,2,3";
 
-      String? result = getDelimiter(inputString);
+      final (delimiterResult, numbersResult) = splitDelimiter(inputString);
 
-      expect(result, null);
+      expect(delimiterResult, null);
+      expect(numbersResult, '1,2,3');
     });
 
     test('should return ;; delimiter present in the string', () {
       final inputString = "//;;\n1;;2;;3";
 
-      String? result = getDelimiter(inputString);
+      final (delimiterResult, numbersResult) = splitDelimiter(inputString);
 
-      expect(result, ';;');
+      expect(delimiterResult, ';;');
+      expect(numbersResult, '1;;2;;3');
     });
   });
 }
