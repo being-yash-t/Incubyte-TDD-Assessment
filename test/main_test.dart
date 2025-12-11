@@ -13,5 +13,16 @@ void main() {
       // verify
       expect(result, 0);
     });
+
+    test('should return a 1 when add is called with \"1\"', () {
+      // arrange
+      final numberString = '1';
+
+      // act
+      final result = add(numberString);
+
+      // verify
+      expect(result, int.parse(numberString));
+    });
   });
 }
