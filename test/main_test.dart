@@ -82,4 +82,14 @@ void main() {
       },
     );
   });
+
+  group('getDelimiter', () {
+    test('Return null if theres no delimiter in the string', () {
+      final inputString = "1,2,3";
+
+      String? result = getDelimiter(inputString);
+
+      expect(result, null);
+    });
+  });
 }

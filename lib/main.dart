@@ -26,3 +26,10 @@ void checkForNegatives(Iterable<int> numbers) {
     throw exception;
   }
 }
+
+String? getDelimiter(String numbers) {
+  if (numbers.startsWith('//')) {
+    throw UnimplementedError();
+  }
+  return null;
+}
