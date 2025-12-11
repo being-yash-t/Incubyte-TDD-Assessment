@@ -1,5 +1,5 @@
-import 'package:incubyte_tdd_assignment/exceptions.dart';
-import 'package:incubyte_tdd_assignment/main.dart';
+import 'package:incubyte_tdd_assignment/core/exceptions.dart';
+import 'package:incubyte_tdd_assignment/add.dart';
 import 'package:test/test.dart';
 
 void main() {

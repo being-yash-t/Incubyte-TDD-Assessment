@@ -1,5 +1,4 @@
 # Incubyte TDD Assessment
-
 A simple implementation of the String Calculator using **Test-Driven Development**. 
 
 ## Features
@@ -21,10 +20,14 @@ dart test
 ## Structure
 ```
 ├── lib
-│   ├── exceptions.dart
-│   ├── main.dart
-│   └── utils.dart
+│   ├── core
+│   │   ├── exceptions.dart
+│   │   └── utils.dart
+│   ├── add.dart
+│   └── main.dart
 └── test
-    ├── main_test.dart
-    └── utils_test.dart
+    ├── add_test.dart
+    └── core
+        └── utils_test.dart
+
 ```

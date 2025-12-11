@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:incubyte_tdd_assignment/utils.dart';
+import 'package:incubyte_tdd_assignment/core/utils.dart';
 
 void main() {
   test('add', () {
