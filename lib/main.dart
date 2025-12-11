@@ -29,7 +29,9 @@ void checkForNegatives(Iterable<int> numbers) {
 
 String? getDelimiter(String numbers) {
   if (numbers.startsWith('//')) {
-    throw UnimplementedError();
+    final newLineIndex = numbers.indexOf('\n');
+    final delimiter = numbers.substring(2, newLineIndex);
+    return delimiter;
   }
   return null;
 }
