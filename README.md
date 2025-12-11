@@ -8,9 +8,17 @@ A simple implementation of the String Calculator using **Test-Driven Development
 - Supports custom delimiters (`"//;;\n1;;2"`).
 - Throws `NegativeNumberException` when negative numbers are present and lists all negatives.
 
+## Dependencies
+- Flutter ~3.32.8
+
+### Install dependencies
+```
+dart pub get
+```
+
 ## Run
 ```bash
-dart run lib/main.dart "//;\n1;2;3"
+dart run incubyte_tdd_assignment "//;\n1;2;3"
 ```
 ## Test
 ```bash
