@@ -1,7 +1,7 @@
 import 'core/exceptions.dart' as exceptions;
 import 'core/utils.dart' as utils;
 
-int add(String numbers) {
+int handleInput(String numbers) {
   if (numbers.trim().isEmpty) {
     return 0;
   }
@@ -24,8 +24,9 @@ int add(String numbers) {
 
   checkForNegatives(parsedNumbers);
 
-  final sum = parsedNumbers.reduce(utils.add);
-  return sum;
+  return parsedNumbers.reduce(
+    customDelimiter == '*' ? utils.multiply : utils.add,
+  );
 }
 
 void checkForNegatives(Iterable<int> numbers) {

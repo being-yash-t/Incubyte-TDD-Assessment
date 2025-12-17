@@ -1,63 +1,71 @@
 import 'package:incubyte_tdd_assignment/core/exceptions.dart';
-import 'package:incubyte_tdd_assignment/add.dart';
+import 'package:incubyte_tdd_assignment/handle_input.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Add: ', () {
+  group('handleInput: ', () {
     group('Functionality', () {
-      test('should return 0 when add is called with empty string', () {
+      test('should return 0 when handleInput is called with empty string', () {
         // arrage
         final emptyString = '';
 
         // act
-        final result = add(emptyString);
+        final result = handleInput(emptyString);
 
         // verify
         expect(result, 0);
       });
 
-      test('should return a 1 when add is called with "1"', () {
+      test('should return a 1 when handleInput is called with "1"', () {
         // arrange
         final numberString = '1';
 
         // act
-        final result = add(numberString);
+        final result = handleInput(numberString);
 
         // verify
         expect(result, int.parse(numberString));
       });
 
-      test('should return 6 when add is called with "1,5"', () {
+      test('should return 6 when handleInput is called with "1,5"', () {
         // arrange
         final numbersString = "1,5";
 
         // act
-        final result = add(numbersString);
+        final result = handleInput(numbersString);
 
         // verify
         expect(result, 6);
       });
 
-      test('should return 6 when add is called with "//;\n1;5"', () {
+      test('should return 6 when handleInput is called with "//;\n1;5"', () {
         // arrange
         final numbersString = "//;\n1;5";
 
         // act
-        final result = add(numbersString);
+        final result = handleInput(numbersString);
 
         // verify
         expect(result, 6);
       });
 
-      test('should return 7 when add is called with "1,5\n1"', () {
+      test('should return 7 when handleInput is called with "1,5\n1"', () {
         // arrange
         final numbersString = "1,5\n1";
 
         // act
-        final result = add(numbersString);
+        final result = handleInput(numbersString);
 
         // verify
         expect(result, 7);
+      });
+
+      test('should return multiplication when delimiter == *', () {
+        final inputString = '//*\n1*2*4';
+
+        final result = handleInput(inputString);
+
+        expect(result, 8);
       });
     });
 
@@ -68,7 +76,7 @@ void main() {
           // arrage
           final numbersString = "1,2,-1,0";
 
-          int call() => add(numbersString);
+          int call() => handleInput(numbersString);
 
           // verify
           expect(call, throwsA(TypeMatcher<NegativeNumberException>()));
